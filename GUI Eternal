@@ -1,44 +1,39 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("Eternal Tower Defend", "Serpent")
 
-local upgradeTowers = true  -- ตัวแปรสำหรับเก็บสถานะการอัพเกรด
+local upgradeTowers = true
 local antiAFK = true
 
-
--- สร้าง GUI สำหรับการปิด-เปิดการวาง "tower"
 local TTab = Window:NewTab("Auto Farm")
 local MainSection = TTab:NewSection("")
 local TTab = Window:NewTab("Summon")
 local SecondSection = TTab:NewSection("")
-
 
 MainSection:NewButton("Teleport to Planet Namek", "Teleport to Room", function()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(
 -3606.81812, 1039.22803, -1108.78674, -0.906289101, 0.0733914673, -0.416237652, 2.10808544e-08, 0.984808743, 0.173642471, 0.422658354, 0.157370269, -0.892521441)
 end)
 
--- เพิ่มปุ่ม "Spawn Tower" ใน GUI
 MainSection:NewToggle("Spawn Tower Plannet Namek", "Enable/Disable tower spawn", function(state)
 	SpawnTowers = state
 	while SpawnTowers do
     	local function spawnTower(name, cframe, cost)
     	local args = {
-        	[1] = name,      -- ชื่อของ "tower"
-        	[2] = cframe,    -- ตำแหน่งของ "tower" (CFrame)
-        	[3] = cost       -- ราคาของ "tower"
+        	[1] = name,
+        	[2] = cframe,
+        	[3] = cost
     	}
 
     game:GetService("ReplicatedStorage"):WaitForChild("Functions"):WaitForChild("SpawnTower"):InvokeServer(unpack(args))
 end
 
--- วาง "tower" ต่าง ๆ ด้วยการเรียกใช้ฟังก์ชัน
-spawnTower("Sato", CFrame.new(-1099.384, 6.176, -251.138), 800)
-spawnTower("Swordsman (Star King)", CFrame.new(-1099.384, 6.176, -251.138), 1450)
-spawnTower("Melice (Burst Element)", CFrame.new(-1099.384, 6.176, -251.138), 1500)
-spawnTower("Brolu (Rage)", CFrame.new(-1099.384, 6.176, -251.138), 1850)
-spawnTower("Tomi", CFrame.new(-1099.384, 6.176, -251.138), 2250)
-spawnTower("Rudus (Magician)", CFrame.new(-1099.384, 6.176, -251.138), 1600)
-   wait(1)  -- รอ 1 วินาที ก่อนที่จะวนลูปอัพเกรดต่อ
+spawnTower("Sato", CFrame.new(-1139.864, 10.491, -372.477), 800)
+spawnTower("Swordsman (Star King)", CFrame.new(-1139.864, 10.491, -372.477), 1450)
+spawnTower("Melice (Burst Element)", CFrame.new(-1139.864, 10.491, -372.477), 1500)
+spawnTower("Brolu (Rage)", CFrame.new(-1139.864, 10.491, -372.477), 1850)
+spawnTower("Tomi", CFrame.new(-1139.864, 10.491, -372.477), 2250)
+spawnTower("Rudus (Magician)", CFrame.new(-1139.864, 10.491, -372.477), 1600)
+   wait(1)
     end
 end)
 
@@ -47,15 +42,14 @@ MainSection:NewToggle("Spawn Tower Arlong Park", "Enable/Disable tower spawn", f
 	while SpawnTowers do
     	local function spawnTower(name, cframe, cost)
     	local args = {
-        	[1] = name,      -- ชื่อของ "tower"
-        	[2] = cframe,    -- ตำแหน่งของ "tower" (CFrame)
-        	[3] = cost       -- ราคาของ "tower"
+        	[1] = name,
+        	[2] = cframe,
+        	[3] = cost
     	}
 
     game:GetService("ReplicatedStorage"):WaitForChild("Functions"):WaitForChild("SpawnTower"):InvokeServer(unpack(args))
 end
 
--- วาง "tower" ต่าง ๆ ด้วยการเรียกใช้ฟังก์ชัน
 spawnTower("Tatsu", CFrame.new(-995.456298828125, -43.034950256347656, -220.9705810546875, 1, 3.6507486811387935e-08, 6.162709925705556e-11, -3.6507486811387935e-08, 1, 3.8833256814189976e-13, -6.162709925705556e-11, -3.8833479075635335e-13, 1), 
 800)
 spawnTower("Sato", CFrame.new(-995.456298828125, -43.034950256347656, -220.9705810546875, 1, 3.6507486811387935e-08, 6.162709925705556e-11, -3.6507486811387935e-08, 1, 3.8833256814189976e-13, -6.162709925705556e-11, -3.8833479075635335e-13, 1), 
@@ -69,7 +63,7 @@ spawnTower("Freeza (Final)", CFrame.new(-995.456298828125, -43.034950256347656, 
 spawnTower("Manipulator", CFrame.new(-995.456298828125, -43.034950256347656, -220.9705810546875, 1, 3.6507486811387935e-08, 6.162709925705556e-11, -3.6507486811387935e-08, 1, 3.8833256814189976e-13, -6.162709925705556e-11, -3.8833479075635335e-13, 1), 
 800)
 
-   wait(1)  -- รอ 1 วินาที ก่อนที่จะวนลูปอัพเกรดต่อ
+   wait(1)
     end
 end)
 
@@ -78,15 +72,14 @@ MainSection:NewToggle("Spawn Tower Soul City", "Enable/Disable tower spawn", fun
 	while SpawnTowers do
     	local function spawnTower(name, cframe, cost)
     	local args = {
-        	[1] = name,      -- ชื่อของ "tower"
-        	[2] = cframe,    -- ตำแหน่งของ "tower" (CFrame)
-        	[3] = cost       -- ราคาของ "tower"
+        	[1] = name,
+        	[2] = cframe,
+        	[3] = cost
     	}
 
     game:GetService("ReplicatedStorage"):WaitForChild("Functions"):WaitForChild("SpawnTower"):InvokeServer(unpack(args))
 end
 
--- วาง "tower" ต่าง ๆ ด้วยการเรียกใช้ฟังก์ชัน
 spawnTower("Tatsu", CFrame.new(-876.2589111328125, -36.20749282836914, -118.719970703125, 1, 2.3237234358930436e-09, 7.223641129705527e-10, -2.3237234358930436e-09, 1, 3.137417646691564e-17, -7.223641129705527e-10, -3.30527542316348e-17, 1), 
 800)
 spawnTower("Sato", CFrame.new(-876.2589111328125, -36.20749282836914, -118.719970703125, 1, 2.3237234358930436e-09, 7.223641129705527e-10, -2.3237234358930436e-09, 1, 3.137417646691564e-17, -7.223641129705527e-10, -3.30527542316348e-17, 1), 
@@ -100,26 +93,22 @@ spawnTower("Freeza (Final)", CFrame.new(-876.2589111328125, -36.20749282836914, 
 spawnTower("Manipulator", CFrame.new(-995.456298828125, -43.034950256347656, -220.9705810546875, 1, 3.6507486811387935e-08, 6.162709925705556e-11, -3.6507486811387935e-08, 1, 3.8833256814189976e-13, -6.162709925705556e-11, -3.8833479075635335e-13, 1), 
 800)
 
-   wait(1)  -- รอ 1 วินาที ก่อนที่จะวนลูปอัพเกรดต่อ
+   wait(1)
     end
 end)
 
--- เพิ่มปุ่ม "Toggle Upgrade Towers" เพื่อเปิด/ปิดการอัพเกรด
 MainSection:NewToggle("Toggle Upgrade Towers", "Enable/Disable tower upgrades", function(state)
     upgradeTowers = state
     while upgradeTowers do
-        -- สร้างวงวนเพื่อค้นหาทุก "tower" ที่ spawn
         for _, tower in ipairs(workspace:WaitForChild("Running"):WaitForChild("Towers"):GetChildren()) do
-            -- ตรวจสอบว่า "tower" มีคุณสมบัติที่เหมาะสมสำหรับการอัพเกรด
             if tower:IsA("Model") then
-                -- ทำการอัพเกรด "tower" ที่ตรวจพบ โดยเรียกใช้งาน Remote Function
                 local args = {
                     [1] = tower
                 }
                 game:GetService("ReplicatedStorage"):WaitForChild("Functions"):WaitForChild("UpgradeTower"):InvokeServer(unpack(args))
             end
         end
-        wait(1)  -- รอ 1 วินาที ก่อนที่จะวนลูปอัพเกรดต่อ
+        wait(1)
     end
 end)
 
