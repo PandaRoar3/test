@@ -1,0 +1,64 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Anime Catcher Simulator", "Serpent")
+
+local AutoFarm = false
+local FarmActive = false
+
+local TTab = Window:NewTab("Auto Farm")
+local MainSection = TTab:NewSection("Auto Farm")
+
+MainSection:NewToggle("Auto Farm Cursed Academy", "Enable/Disable Farm Gems Cursed Academy", function(state)
+	AutoFarm = state
+	if AutoFarm then
+		-- Start farming loop
+		FarmGemsCursedAcademy()
+	end
+end)
+
+function FarmGemsCursedAcademy()
+	-- Ensure the loop is not already active
+	if FarmActive then
+		return
+	end
+	
+	FarmActive = true
+	while AutoFarm do
+		local enemyFolder = workspace.Server.Enemies["Cursed Academy"]
+		local randomEnemy = enemyFolder:GetChildren()[math.random(1, #enemyFolder:GetChildren())]
+		
+		game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(randomEnemy.CFrame)
+		wait(2)
+		
+		local humanoidRootPart = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+		humanoidRootPart.CFrame = CFrame.new(humanoidRootPart.Position.x, humanoidRootPart.Position.y + 50, humanoidRootPart.Position.z)
+	end
+	FarmActive = false
+end
+
+MainSection:NewToggle("Auto Farm Defense", "Enable/Disable Farm Gems Defense", function(state)
+	AutoFarmDefense = state
+	if AutoFarmDefense then
+		-- Start farming loop
+		FarmGemsDefense()
+	end
+end)
+
+function FarmGemsDefense()
+	-- Ensure the loop is not already active
+	if FarmActive then
+		return
+	end
+	
+	FarmActive = true
+	while AutoFarm do
+		local enemyFolder = workspace.Server.Defense
+		local randomEnemy = enemyFolder:GetChildren()[math.random(1, #enemyFolder:GetChildren())]
+		
+		game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(randomEnemy.CFrame)
+		wait(2)
+		
+		local humanoidRootPart = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+		humanoidRootPart.CFrame = CFrame.new(humanoidRootPart.Position.x, humanoidRootPart.Position.y + 50, humanoidRootPart.Position.z)
+	end
+	FarmActive = false
+end
