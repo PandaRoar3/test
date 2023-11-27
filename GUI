@@ -27,7 +27,7 @@ function FarmGemsCursedAcademy()
 		local randomEnemy = enemyFolder:GetChildren()[math.random(1, #enemyFolder:GetChildren())]
 		
 		game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(randomEnemy.CFrame)
-		wait(2)
+		wait()
 		
 		local humanoidRootPart = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
 		humanoidRootPart.CFrame = CFrame.new(humanoidRootPart.Position.x, humanoidRootPart.Position.y + 50, humanoidRootPart.Position.z)
