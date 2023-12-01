@@ -42,7 +42,7 @@ MainSection:NewToggle("Capture Boros", "Enable/Disable Capture Boros", function(
         local args = {
             [1] = "Capture",
             [2] = "Capture",
-            [3] = workspace:WaitForChild("Server"):WaitForChild("Enemies"):WaitForChild("Punch City"):WaitForChild("King")
+            [3] = workspace:WaitForChild("Server"):WaitForChild("Enemies"):WaitForChild("Punch City"):WaitForChild("Borus")
         }
 
         game:GetService("ReplicatedStorage"):WaitForChild("Bridge"):FireServer(unpack(args))
