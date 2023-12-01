@@ -1,13 +1,17 @@
+-- Load library
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("Anime Catcher Simulator", "Serpent")
 
+-- Variables
 local AutoFarm = false
 local FarmActive = false
 local Capture = false
 
+-- Main Auto Farm Tab
 local TTab = Window:NewTab("Auto Farm")
 local MainSection = TTab:NewSection("Auto Farm")
 
+-- Auto Farm Cursed Academy Toggle
 MainSection:NewToggle("Auto Farm Cursed Academy", "Enable/Disable Farm Gems Cursed Academy", function(state)
 	AutoFarm = state
 	if AutoFarm then
@@ -16,6 +20,32 @@ MainSection:NewToggle("Auto Farm Cursed Academy", "Enable/Disable Farm Gems Curs
 	end
 end)
 
+-- Capture Boros Button
+MainSection:NewButton("Capture Boros", "Capture Boros once", function()
+	CaptureBorosOnce()
+end)
+
+-- Auto Farm Defense Toggle
+MainSection:NewToggle("Auto Farm Defense", "Enable/Disable Farm Gems Defense", function(state)
+	AutoFarmDefense = state
+	if AutoFarmDefense then
+		-- Start farming loop
+		FarmGemsDefense()
+	end
+end)
+
+-- Function to capture Boros once
+function CaptureBorosOnce()
+	local args = {
+		[1] = "Capture",
+		[2] = "Capture",
+		[3] = workspace:WaitForChild("Server"):WaitForChild("Enemies"):WaitForChild("Punch City"):WaitForChild("Boros")
+	}
+
+	game:GetService("ReplicatedStorage"):WaitForChild("Bridge"):FireServer(unpack(args))
+end
+
+-- Function to farm gems in Cursed Academy
 function FarmGemsCursedAcademy()
 	-- Ensure the loop is not already active
 	if FarmActive then
@@ -36,28 +66,7 @@ function FarmGemsCursedAcademy()
 	FarmActive = false
 end
 
-MainSection:NewToggle("Capture Boros", "Enable/Disable Capture Boros", function(state)
-	Capture = state
-	while Capture do
-        local args = {
-            [1] = "Capture",
-            [2] = "Capture",
-            [3] = workspace:WaitForChild("Server"):WaitForChild("Enemies"):WaitForChild("Punch City"):WaitForChild("Borus")
-        }
-
-        game:GetService("ReplicatedStorage"):WaitForChild("Bridge"):FireServer(unpack(args))
-        wait(1) -- Add a wait to avoid excessive firing of the server
-    end
-end)
-
-MainSection:NewToggle("Auto Farm Defense", "Enable/Disable Farm Gems Defense", function(state)
-	AutoFarmDefense = state
-	if AutoFarmDefense then
-		-- Start farming loop
-		FarmGemsDefense()
-	end
-end)
-
+-- Function to farm gems in Defense area
 function FarmGemsDefense()
 	-- Ensure the loop is not already active
 	if FarmActive then
