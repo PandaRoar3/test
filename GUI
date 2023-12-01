@@ -3,6 +3,7 @@ local Window = Library.CreateLib("Anime Catcher Simulator", "Serpent")
 
 local AutoFarm = false
 local FarmActive = false
+local Capture = false
 
 local TTab = Window:NewTab("Auto Farm")
 local MainSection = TTab:NewSection("Auto Farm")
@@ -34,6 +35,20 @@ function FarmGemsCursedAcademy()
 	end
 	FarmActive = false
 end
+
+MainSection:NewToggle("Capture Boros", "Enable/Disable Capture Boros", function(state)
+	Capture = state
+	while Capture do
+        local args = {
+            [1] = "Capture",
+            [2] = "Capture",
+            [3] = workspace:WaitForChild("Server"):WaitForChild("Enemies"):WaitForChild("Punch City"):WaitForChild("King")
+        }
+
+        game:GetService("ReplicatedStorage"):WaitForChild("Bridge"):FireServer(unpack(args))
+        wait(1) -- Add a wait to avoid excessive firing of the server
+    end
+end)
 
 MainSection:NewToggle("Auto Farm Defense", "Enable/Disable Farm Gems Defense", function(state)
 	AutoFarmDefense = state
