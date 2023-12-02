@@ -21,8 +21,8 @@ MainSection:NewToggle("Auto Farm Cursed Academy", "Enable/Disable Farm Gems Curs
 end)
 
 -- Capture Boros Button
-MainSection:NewButton("Capture Boros", "Capture Boros once", function()
-	CaptureBorosOnce()
+MainSection:NewToggle("Capture Ayzen", "Capture Ayzen", function()
+	CaptureAyzenOnce()
 end)
 
 -- Auto Farm Defense Toggle
@@ -35,7 +35,7 @@ MainSection:NewToggle("Auto Farm Defense", "Enable/Disable Farm Gems Defense", f
 end)
 
 -- Function to capture Boros once
-function CaptureBorosOnce()
+function CaptureAyzenOnce()
 	local args = {
 		[1] = "Capture",
 		[2] = "Capture",
