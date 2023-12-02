@@ -6,6 +6,7 @@ local Window = Library.CreateLib("Anime Catcher Simulator", "Serpent")
 local AutoFarm = false
 local FarmActive = false
 local Capture = false
+local CaptureAyzenOnce = false
 
 -- Main Auto Farm Tab
 local TTab = Window:NewTab("Auto Farm")
@@ -21,8 +22,11 @@ MainSection:NewToggle("Auto Farm Cursed Academy", "Enable/Disable Farm Gems Curs
 end)
 
 -- Capture Boros Button
-MainSection:NewToggle("Capture Ayzen", "Capture Ayzen", function()
-	CaptureAyzenOnce()
+MainSection:NewToggle("Capture Ayzen", "Capture Ayzen", function(state)
+	CaptureAyzenOnce = state
+	if AutoFarm then
+		CaptureAyzenOnce()
+	end
 end)
 
 -- Auto Farm Defense Toggle
