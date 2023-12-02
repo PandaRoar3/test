@@ -39,7 +39,7 @@ function CaptureBorosOnce()
 	local args = {
 		[1] = "Capture",
 		[2] = "Capture",
-		[3] = workspace:WaitForChild("Server"):WaitForChild("Enemies"):WaitForChild("Punch City"):WaitForChild("Boros")
+		[3] = workspace:WaitForChild("Server"):WaitForChild("Enemies"):WaitForChild("Hollow island"):WaitForChild("Ayzen")
 	}
 
 	game:GetService("ReplicatedStorage"):WaitForChild("Bridge"):FireServer(unpack(args))
