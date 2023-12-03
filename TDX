@@ -1,0 +1,40 @@
+-- ฟังก์ชันตรวจสอบและวาปไปยังด่านที่มีชื่อแมพตรงกับ "Blox Out"
+local function teleportToMatchingDungeon()
+    local mapNameAttribute = "MapName" -- ชื่อ Attribute ที่เก็บชื่อแมพ
+    local desiredMapName = "Blox Out" -- ชื่อแมพที่ต้องการ
+
+    local numDoors = 8 -- จำนวนประตู
+
+    while true do
+        for i = 1, numDoors do
+            local door = workspace.APCs[i]
+
+            -- ตรวจสอบว่าประตูมี Attribute "MapName" หรือไม่
+            if door:FindFirstChild(mapNameAttribute) then
+                local doorMapName = door[mapNameAttribute].Value
+
+                -- ถ้าชื่อแมพตรงกับที่ต้องการ
+                if doorMapName == desiredMapName then
+                    -- ตั้งค่าตำแหน่งใหม่สำหรับตัวละคร (ตัวอย่างเช่น Vector3.new(x, y, z))
+                    local newPosition = Vector3.new(0, 5, 0) -- ตั้งค่าตำแหน่งต้นทาง
+                    
+                    -- ให้ตัวละครวาปไปยังด่านที่มีชื่อแมพตรงกับที่ต้องการ
+                    game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(CFrame.new(newPosition))
+
+                    print("Teleported to Dungeon with MapName: " .. doorMapName)
+                    return -- ออกจากฟังก์ชันเมื่อพบด่านที่ต้องการ
+                end
+            end
+        end
+
+        wait(1) -- รอ 1 วินาที แล้วทำการตรวจสอบใหม่
+    end
+end
+
+-- ฟังก์ชันเมื่อผู้เล่นกระทำบางอย่าง (ตัวอย่างเช่น การกดปุ่ม)
+local function onPlayerAction()
+    teleportToMatchingDungeon()
+end
+
+-- เชื่อมโยงฟังก์ชัน onPlayerAction กับเหตุการณ์ที่ต้องการ (ตัวอย่างเช่น การกดปุ่ม)
+game.Players.LocalPlayer:GetMouse().Button1Down:Connect(onPlayerAction)
