@@ -36,6 +36,18 @@ local function autoPlace(npc, positions)
                 [1] = "Slot1"
             }
             game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.Frame.LocalScript.RemoteEvent:FireServer(unpack(args))
+            local args = {
+                [1] = "Slot2"
+            }
+            game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.Frame.LocalScript.RemoteEvent:FireServer(unpack(args))
+            local args = {
+                [1] = "Slot3"
+            }
+            game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.Frame.LocalScript.RemoteEvent:FireServer(unpack(args))
+            local args = {
+                [1] = "Slot4"
+            }
+            game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.Frame.LocalScript.RemoteEvent:FireServer(unpack(args))
         end
     end)
 end
