@@ -1,35 +1,29 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("Anime Tower Defend", "Serpent")
 
+local TTab = Window:NewTab("Auto Farm")
+local MainSection = TTab:NewSection("")
+
 local function spawnTowers(towerList)
     for _, towerData in pairs(towerList) do
         placeTower(towerData.name, towerData.position)
     end
 end
 
-local function upgradeAllTowersInFolder(folder)
-    for _, npc in pairs(folder:GetChildren()) do
-        if npc:IsA("Model") then
-            local towerName = npc.Name
-            local towerPosition = npc.PrimaryPart.CFrame
-            upgradeTower(towerName, towerPosition)
-        end
-    end
-end
-
-MainSection:NewToggle("Spawn Tower Plannet Namek", "Enable/Disable tower spawn", function(state)
+local spawnToggle = MainSection:NewToggle("Spawn Tower Plannet Namek", "Enable/Disable tower spawn", function(state)
     if state then
         local towersToSpawn = {
             { name = "Eren", position = CFrame.new(15.432119369506836, 1.492187261581421, -89.61231994628906) },
             { name = "Enji", position = CFrame.new(15.12680435180664, 1.4921836853027344, -71.90945434570312) },
-            { name = "Kizaru", position = CFrame.new(21.048154830932617, 5.11320686340332, -91.08514404296875) },
+	    { name = "Kizaru", position = CFrame.new(21.048154830932617, 5.11320686340332, -91.08514404296875) },
             -- เพิ่ม Tower ที่ต้องการอื่น ๆ ต่อทีหลัง
         }
         spawnTowers(towersToSpawn)
     end
 end)
 
-MainSection:NewToggle("Upgrade Tower Plannet Namek", "Enable/Disable tower upgrade", function(state)
+
+local upgradeToggle = MainSection:NewToggle("Upgrade Tower Plannet Namek", "Enable/Disable tower upgrade", function(state)
     if state then
         local npcFolder = workspace:WaitForChild("PlayerFodel"):WaitForChild("Npc")
         upgradeAllTowersInFolder(npcFolder) -- อัพเกรดทุก Tower ในโฟลเดอร์
