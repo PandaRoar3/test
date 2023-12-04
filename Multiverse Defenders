@@ -85,3 +85,31 @@ MainSection:NewButton("Auto Upgrade", "Makes you do gymnastics", function()
     local npcsToUpgrade = {"Eren", "Dabi", "Enji", "Kizaru"}
     autoUpgrade(npcsToUpgrade)
 end)
+
+MainSection:NewButton("Auto Replay", "Replay your room", function()
+    while true do
+        wait(1)  -- หยุดการทำงาน 1 วินาที
+
+        local localPlayer = game:GetService("Players").LocalPlayer
+        local playerGui = localPlayer and localPlayer:FindFirstChild("PlayerGui")
+
+        if playerGui then
+            local screenGui = playerGui:FindFirstChild("ScreenGui")
+            if screenGui and screenGui:FindFirstChild("Win") then
+                local winFrame = screenGui.Win.Frame1
+                if winFrame and winFrame:FindFirstChild("Replay") then
+                    local replayButton = winFrame.Replay
+
+                    local localScript = replayButton:FindFirstChild("LocalScript")
+                    local remoteEvent = localScript and localScript:FindFirstChild("RemoteEvent")
+
+                    if localScript and remoteEvent then
+                        local args = { [1] = localPlayer }
+                        remoteEvent:FireServer(unpack(args))
+                    end
+                end
+            end
+        end
+    end
+end)
+
