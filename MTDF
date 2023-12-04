@@ -1,10 +1,3 @@
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("Multiverse TDF", "BloodTheme")
-------
--- Main Tab
-local Main = Window:NewTab("Main")
-local MainSection = Main:NewSection("Main")
-
 local function autoPlace(npc, positions)
     local RunService = game:GetService("RunService")
     local Timer = 0
@@ -63,22 +56,7 @@ local function autoUpgrade(npcs)
     end)
 end
 
-MainSection:NewButton("Auto Place", "Makes you do gymnastics", function()
-    local positions = {
-        Vector3.new(10.9067783, 2.05575228, -103.263527),
-
-    }
-    autoPlace("Eren", positions)
-    autoPlace("Erwin", positions)
-
-end)
-
-MainSection:NewButton("Auto Upgrade", "Makes you do gymnastics", function()
-    local npcsToUpgrade = {"Eren", "Erwin", "Enji", "Kizaru"}
-    autoUpgrade(npcsToUpgrade)
-end)
-
-MainSection:NewButton("Auto Replay", "Replay your room", function()
+local function autoReplay()
     while true do
         wait(1)  -- หยุดการทำงาน 1 วินาที
 
@@ -103,5 +81,26 @@ MainSection:NewButton("Auto Replay", "Replay your room", function()
             end
         end
     end
+end
+
+MainSection:NewToggle("Auto Place", "Makes you do gymnastics", function(state)
+    if state then
+        local positions = {
+            Vector3.new(10.9067783, 2.05575228, -103.263527),
+            Vector3.new(13.9067783, 2.05575228, -106.263527)
+        }
+        autoPlace("Eren", positions)
+        autoPlace("Erwin", positions)
+    end
 end)
 
+MainSection:NewToggle("Auto Upgrade", "Makes you do gymnastics", function(state)
+    if state then
+        local npcsToUpgrade = {"Eren", "Erwin", "Enji", "Kizaru"}
+        autoUpgrade(npcsToUpgrade)
+    end
+end)
+
+MainSection:NewButton("Auto Replay", "Replay your room", function()
+    autoReplay()
+end)
