@@ -1,46 +1,78 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("Anime Tower Defend", "Serpent")
+local Window = Library.CreateLib("Ahmed Mode", "Ocean")
 
-local function spawnTowers(towerList)
-    for _, towerData in pairs(towerList) do
-        local args = {
-            [1] = towerData.name,
-            [2] = towerData.position,
-        }
-        game:GetService("ReplicatedStorage"):WaitForChild("Event"):WaitForChild("TowerOn"):FireServer(unpack(args))
-    end
-end
+-- Main Tab
+local Main = Window:NewTab("Main")
+local MainSection = Main:NewSection("Main")
 
-function upgradeAllTowersInFolder(folder)
-    for _, npc in pairs(folder:GetChildren()) do
-        if npc:IsA("Model") then
-            local towerName = npc.Name
-            local towerPosition = npc.PrimaryPart.CFrame.Position
-            upgradeTower(towerName, towerPosition)
+local function autoPlace(npc, positions)
+    local RunService = game:GetService("RunService")
+    local Timer = 0
+    local TimerMax = 2
+
+    local currentIndex = 1
+
+    RunService.Heartbeat:Connect(function(Delta)
+        Timer += Delta
+        if Timer >= TimerMax then
+            Timer = 0
+            if currentIndex <= #positions then
+                local args = {
+                    [1] = npc,
+                    [2] = CFrame.new(positions[currentIndex].x, positions[currentIndex].y, positions[currentIndex].z) * CFrame.Angles(0, 1.5707963705062866, 0)
+                }
+                game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(args))
+                currentIndex += 1
+            end
         end
-    end
+    end)
+
+    -- Auto Equip
+    RunService.Heartbeat:Connect(function(Delta)
+        Timer += Delta
+        if Timer >= TimerMax then
+            Timer = 0
+            local args = {
+                [1] = "Slot1"
+            }
+            game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.Frame.LocalScript.RemoteEvent:FireServer(unpack(args))
+                [1] = "Slot2"
+            }
+            game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.Frame.LocalScript.RemoteEvent:FireServer(unpack(args))
+        end
+    end)
 end
 
-local TTab = Window:NewTab("Auto Farm")
-local MainSection = TTab:NewSection("")
+local function autoUpgrade(npcs)
+    local RunService = game:GetService("RunService")
+    local Timer = 0
+    local TimerMax = 2
 
-local spawnToggle = MainSection:NewToggle("Spawn Tower Plannet Namek", "Enable/Disable tower spawn", function(state)
-    while state do
-        local towersToSpawn = {
-            { name = "Eren", position = CFrame.new(15.432119369506836, 1.492187261581421, -89.61231994628906) },
-            { name = "Enji", position = CFrame.new(15.12680435180664, 1.4921836853027344, -71.90945434570312) },
-            { name = "Kizaru", position = CFrame.new(21.048154830932617, 5.11320686340332, -91.08514404296875) },
-            -- เพิ่ม Tower ที่ต้องการอื่น ๆ ต่อทีหลัง
-        }
-        spawnTowers(towersToSpawn)
-        wait(1)  -- รอ 1 วินาทีก่อนที่จะวนลูปใหม่
-    end
+    RunService.Heartbeat:Connect(function(Delta)
+        Timer += Delta
+        if Timer >= TimerMax then
+            Timer = 0
+            for i, npc in ipairs(npcs) do
+                local args = {
+                    [1] = workspace.PlayerFodel.Npc[npc]
+                }
+                game:GetService("Players").LocalPlayer.PlayerGui.UpLevel.Frame.Uplevel.LocalScript.RemoteEvent:FireServer(unpack(args))
+            end
+        end
+    end)
+end
+
+MainSection:NewButton("Auto Place", "Makes you do gymnastics", function()
+    local positions = {
+        Vector3.new(15.9067783, 2.05575228, -103.263527),
+        Vector3.new(15.9067783, 2.05575228, -105.263527),
+    }
+    autoPlace("Eren", positions)
+    autoPlace("Erwin", positions)
+
 end)
 
-local upgradeToggle = MainSection:NewToggle("Upgrade Tower Plannet Namek", "Enable/Disable tower upgrade", function(state)
-    while state do
-        local npcFolder = workspace:WaitForChild("PlayerFodel"):WaitForChild("Npc")
-        upgradeAllTowersInFolder(npcFolder) -- อัพเกรดทุก Tower ในโฟลเดอร์
-        wait(1)  -- รอ 1 วินาทีก่อนที่จะวนลูปใหม่
-    end
+MainSection:NewButton("Auto Upgrade", "Makes you do gymnastics", function()
+    local npcsToUpgrade = {"Eren", "Erwin"}
+    autoUpgrade(npcsToUpgrade)
 end)
