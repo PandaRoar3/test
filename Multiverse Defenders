@@ -3,6 +3,8 @@ local Window = Library.CreateLib("Anime Tower Defend", "Serpent")
 
 local TTab = Window:NewTab("Auto Farm")
 local MainSection = TTab:NewSection("")
+local TTab = Window:NewTab("Summon")
+local SecondSection = TTab:NewSection("")
 
 local function spawnTowers(towerList)
     for _, towerData in pairs(towerList) do
