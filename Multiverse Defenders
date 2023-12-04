@@ -1,5 +1,5 @@
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("Ahmed Mode", "Ocean")
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/PandaRoar3/test/main/Script%20GUI"))()
+local Window = Library.CreateLib("Multiverse TDF", "BloodTheme")
 
 -- Main Tab
 local Main = Window:NewTab("Main")
