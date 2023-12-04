@@ -5,20 +5,25 @@ local Window = Library.CreateLib("Ahmed Mode", "Ocean")
 local Main = Window:NewTab("Main")
 local MainSection = Main:NewSection("Main")
 
-MainSection:NewButton("Auto Place", "Makes you do gymnastics", function()
+local function autoPlace(npc, positions)
     local RunService = game:GetService("RunService")
     local Timer = 0
     local TimerMax = 2
+
+    local currentIndex = 1
 
     RunService.Heartbeat:Connect(function(Delta)
         Timer += Delta
         if Timer >= TimerMax then
             Timer = 0
-            local args = {
-                [1] = "Eren",
-                [2] = CFrame.new(15.9067783, 2.05575228, -103.263527) * CFrame.Angles(0, 1.5707963705062866, 0)
-            }
-            game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(args))
+            if currentIndex <= #positions then
+                local args = {
+                    [1] = npc,
+                    [2] = CFrame.new(positions[currentIndex].x, positions[currentIndex].y, positions[currentIndex].z) * CFrame.Angles(0, 1.5707963705062866, 0)
+                }
+                game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(args))
+                currentIndex += 1
+            end
         end
     end)
 
@@ -33,39 +38,9 @@ MainSection:NewButton("Auto Place", "Makes you do gymnastics", function()
             game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.Frame.LocalScript.RemoteEvent:FireServer(unpack(args))
         end
     end)
-    RunService.Heartbeat:Connect(function(Delta)
-        Timer += Delta
-        if Timer >= TimerMax then
-            Timer = 0
-            local args = {
-                [1] = "Slot2"
-            }
-            game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.Frame.LocalScript.RemoteEvent:FireServer(unpack(args))
-        end
-    end)
-    RunService.Heartbeat:Connect(function(Delta)
-        Timer += Delta
-        if Timer >= TimerMax then
-            Timer = 0
-            local args = {
-                [1] = "Slot3"
-            }
-            game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.Frame.LocalScript.RemoteEvent:FireServer(unpack(args))
-        end
-    end)
-    RunService.Heartbeat:Connect(function(Delta)
-        Timer += Delta
-        if Timer >= TimerMax then
-            Timer = 0
-            local args = {
-                [1] = "Slot4"
-            }
-            game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.Frame.LocalScript.RemoteEvent:FireServer(unpack(args))
-        end
-    end)
-end)
+end
 
-MainSection:NewButton("Auto Upgrade", "Makes you do gymnastics", function()
+local function autoUpgrade(npcs)
     local RunService = game:GetService("RunService")
     local Timer = 0
     local TimerMax = 2
@@ -74,11 +49,39 @@ MainSection:NewButton("Auto Upgrade", "Makes you do gymnastics", function()
         Timer += Delta
         if Timer >= TimerMax then
             Timer = 0
-            local args = {
-                [1] = workspace.PlayerFodel.Npc.Eren
-            }
-            game:GetService("Players").LocalPlayer.PlayerGui.UpLevel.Frame.Uplevel.LocalScript.RemoteEvent:FireServer(unpack(args))
+            for i, npc in ipairs(npcs) do
+                local args = {
+                    [1] = workspace.PlayerFodel.Npc[npc]
+                }
+                game:GetService("Players").LocalPlayer.PlayerGui.UpLevel.Frame.Uplevel.LocalScript.RemoteEvent:FireServer(unpack(args))
+            end
         end
     end)
+end
+
+MainSection:NewButton("Auto Place", "Makes you do gymnastics", function()
+    local positions = {
+        Vector3.new(10.9067783, 2.05575228, -103.263527),
+        Vector3.new(12.9067783, 2.05575228, -105.263527),
+        Vector3.new(12.9067783, 2.05575228, -107.263527),
+        Vector3.new(12.9067783, 2.05575228, -109.263527),
+        Vector3.new(12.9067783, 2.05575228, -111.263527),
+        Vector3.new(15.9067783, 2.05575228, -113.263527),
+        Vector3.new(15.9067783, 2.05575228, -115.263527),
+        Vector3.new(15.9067783, 2.05575228, -117.263527),
+        Vector3.new(15.9067783, 2.05575228, -119.263527),
+        Vector3.new(17.9067783, 2.05575228, -121.263527),
+        Vector3.new(17.9067783, 2.05575228, -123.263527),
+        Vector3.new(17.9067783, 2.05575228, -125.263527),
+        Vector3.new(17.9067783, 2.05575228, -127.263527),
+    }
+    autoPlace("Eren", positions)
+    autoPlace("Enji", positions)
+    autoPlace("Dabi", positions)
+    autoPlace("Kizaru", positions)
 end)
 
+MainSection:NewButton("Auto Upgrade", "Makes you do gymnastics", function()
+    local npcsToUpgrade = {"Eren", "Dabi", "Enji", "Kizaru"}
+    autoUpgrade(npcsToUpgrade)
+end)
