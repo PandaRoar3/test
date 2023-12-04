@@ -25,7 +25,7 @@ local TTab = Window:NewTab("Auto Farm")
 local MainSection = TTab:NewSection("")
 
 local spawnToggle = MainSection:NewToggle("Spawn Tower Plannet Namek", "Enable/Disable tower spawn", function(state)
-    if state then
+    while state do
         local towersToSpawn = {
             { name = "Eren", position = CFrame.new(15.432119369506836, 1.492187261581421, -89.61231994628906) },
             { name = "Enji", position = CFrame.new(15.12680435180664, 1.4921836853027344, -71.90945434570312) },
@@ -33,12 +33,14 @@ local spawnToggle = MainSection:NewToggle("Spawn Tower Plannet Namek", "Enable/D
             -- เพิ่ม Tower ที่ต้องการอื่น ๆ ต่อทีหลัง
         }
         spawnTowers(towersToSpawn)
+        wait(1)  -- รอ 1 วินาทีก่อนที่จะวนลูปใหม่
     end
 end)
 
 local upgradeToggle = MainSection:NewToggle("Upgrade Tower Plannet Namek", "Enable/Disable tower upgrade", function(state)
-    if state then
+    while state do
         local npcFolder = workspace:WaitForChild("PlayerFodel"):WaitForChild("Npc")
         upgradeAllTowersInFolder(npcFolder) -- อัพเกรดทุก Tower ในโฟลเดอร์
+        wait(1)  -- รอ 1 วินาทีก่อนที่จะวนลูปใหม่
     end
 end)
