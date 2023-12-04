@@ -1,3 +1,10 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Multiverse TDF", "BloodTheme")
+------
+-- Main Tab
+local Main = Window:NewTab("Main")
+local MainSection = Main:NewSection("Main")
+
 local function autoPlace(npc, positions)
     local RunService = game:GetService("RunService")
     local Timer = 0
@@ -87,7 +94,6 @@ MainSection:NewToggle("Auto Place", "Makes you do gymnastics", function(state)
     if state then
         local positions = {
             Vector3.new(10.9067783, 2.05575228, -103.263527),
-            Vector3.new(13.9067783, 2.05575228, -106.263527)
         }
         autoPlace("Eren", positions)
         autoPlace("Erwin", positions)
