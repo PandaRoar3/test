@@ -142,7 +142,7 @@ MainSection:NewButton("Auto Place", "Makes you do gymnastics", function()
     end)
 end)
 
-MainSection:NewButton("Auto Upgrade", "Makes you do gymnastics", function()
+local function autoUpgrade(npcs)
     local RunService = game:GetService("RunService")
     local Timer = 0
     local TimerMax = 2
@@ -151,22 +151,17 @@ MainSection:NewButton("Auto Upgrade", "Makes you do gymnastics", function()
         Timer += Delta
         if Timer >= TimerMax then
             Timer = 0
-            local args = {
-                [1] = workspace.PlayerFodel.Npc.Eren
-            }
-            game:GetService("Players").LocalPlayer.PlayerGui.UpLevel.Frame.Uplevel.LocalScript.RemoteEvent:FireServer(unpack(args))
-            local args = {
-                [1] = workspace.PlayerFodel.Npc.Dabi
-            }
-            game:GetService("Players").LocalPlayer.PlayerGui.UpLevel.Frame.Uplevel.LocalScript.RemoteEvent:FireServer(unpack(args))
-            local args = {
-                [1] = workspace.PlayerFodel.Npc.Enji
-            }
-            game:GetService("Players").LocalPlayer.PlayerGui.UpLevel.Frame.Uplevel.LocalScript.RemoteEvent:FireServer(unpack(args))
-            local args = {
-                [1] = workspace.PlayerFodel.Npc.Kizaru
-            }
-            game:GetService("Players").LocalPlayer.PlayerGui.UpLevel.Frame.Uplevel.LocalScript.RemoteEvent:FireServer(unpack(args))
+            for i, npc in ipairs(npcs) do
+                local args = {
+                    [1] = workspace.PlayerFodel.Npc[npc]
+                }
+                game:GetService("Players").LocalPlayer.PlayerGui.UpLevel.Frame.Uplevel.LocalScript.RemoteEvent:FireServer(unpack(args))
+            end
         end
     end)
+end
+
+MainSection:NewButton("Auto Upgrade", "Makes you do gymnastics", function()
+    local npcsToUpgrade = {"Eren", "Erwin", "Enji", "Kizaru"}
+    autoUpgrade(npcsToUpgrade)
 end)
