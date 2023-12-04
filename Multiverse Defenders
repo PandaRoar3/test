@@ -1,33 +1,107 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("Anime Tower Defend", "Serpent")
+local Window = Library.CreateLib("Ahmed Mode", "Ocean")
 
-local TTab = Window:NewTab("Auto Farm")
-local MainSection = TTab:NewSection("")
-local TTab = Window:NewTab("Summon")
-local SecondSection = TTab:NewSection("")
 
-local function spawnTowers(towerList)
-    for _, towerData in pairs(towerList) do
-        placeTower(towerData.name, towerData.position)
-    end
+local Main = Window:NewTab("Main")
+local MainSection = Main:NewSection("Main")
+
+MainSection:NewButton("Auto Place", "Makes you do gymnastics", function()
+local RunService = game:GetService("RunService")
+local Timer = 0
+local TimerMax = 2
+RunService.Heartbeat:Connect(function(Delta)
+Timer += Delta
+if Timer >= TimerMax then
+Timer = 0
+local args = {
+[1] = "Eren",
+[2] = CFrame.new(21.966938018798828, 1.4921760559082031, -68.73453521728516) * CFrame.Angles(0, 1.5707963705062866, 0)
+}
+game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(args))
 end
-
-local spawnToggle = MainSection:NewToggle("Spawn Tower Plannet Namek", "Enable/Disable tower spawn", function(state)
-    if state then
-        local towersToSpawn = {
-            { name = "Eren", position = CFrame.new(15.432119369506836, 1.492187261581421, -89.61231994628906) },
-            { name = "Enji", position = CFrame.new(15.12680435180664, 1.4921836853027344, -71.90945434570312) },
-	    { name = "Kizaru", position = CFrame.new(21.048154830932617, 5.11320686340332, -91.08514404296875) },
-            -- เพิ่ม Tower ที่ต้องการอื่น ๆ ต่อทีหลัง
-        }
-        spawnTowers(towersToSpawn)
-    end
 end)
-
-
-local upgradeToggle = MainSection:NewToggle("Upgrade Tower Plannet Namek", "Enable/Disable tower upgrade", function(state)
-    if state then
-        local npcFolder = workspace:WaitForChild("PlayerFodel"):WaitForChild("Npc")
-        upgradeAllTowersInFolder(npcFolder) -- อัพเกรดทุก Tower ในโฟลเดอร์
-    end
+local RunService = game:GetService("RunService")
+local Timer = 0
+local TimerMax = 2
+RunService.Heartbeat:Connect(function(Delta)
+Timer += Delta
+if Timer >= TimerMax then
+Timer = 0
+-- Auto Equip
+local args = {
+[1] = "Slot1"
+}
+game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.Frame.LocalScript.RemoteEvent:FireServer(unpack(args))
+end
+end)
+end)
+MainSection:NewButton("Auto Upgrade", "Makes you do gymnastics", function()
+local RunService = game:GetService("RunService")
+local Timer = 0
+local TimerMax = 2
+RunService.Heartbeat:Connect(function(Delta)
+Timer += Delta
+if Timer >= TimerMax then
+Timer = 0
+local args = {
+[1] = workspace.PlayerFodel.Npc.Eren
+}
+game:GetService("Players").LocalPlayer.PlayerGui.UpLevel.Frame.Uplevel.LocalScript.RemoteEvent:FireServer(unpack(args))
+end
+end)
+end)
+MainSection:NewButton("Upgrade Units Manual", "Makes you do gymnastics", function()
+local args = {
+[1] = workspace.PlayerFodel.Npc.Eren
+}
+game:GetService("Players").LocalPlayer.PlayerGui.UpLevel.Frame.Uplevel.LocalScript.RemoteEvent:FireServer(unpack(args))
+end)
+MainSection:NewButton("Place Units Manual", "Makes you do gymnastics", function()
+local args = {
+[1] = "Eren",
+[2] = CFrame.new(21.966938018798828, 1.4921760559082031, -68.73453521728516) * CFrame.Angles(0, 1.5707963705062866, 0)
+}
+game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(args))
+end)
+MainSection:NewButton("Equip Units Manual", "Makes you do gymnastics", function()
+-- Auto Equip
+local args = {
+[1] = "Slot1"
+}
+game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.Frame.LocalScript.RemoteEvent:FireServer(unpack(args))
+end)
+MainSection:NewToggle("Super-Human", "go fast and jump high", function(state)
+if state then
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 120
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = 120
+else
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+end
+end)
+MainSection:NewButton("Infinite Yield", "FE Admin Commands", function()
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
+end)
+--LOCAL PLAYER
+local Player = Window:NewTab("Player")
+local PlayerSection = Player:NewSection("Player")
+PlayerSection:NewSlider("Walkspeed", "SPEED!!", 500, 16, function(s)
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+PlayerSection:NewSlider("Jumppower", "JUMP HIGH!!", 350, 50, function(s)
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
+PlayerSection:NewButton("Reset WS/JP", "Resets to all defaults", function()
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+end)
+--Other
+local Other = Window:NewTab("Credits")
+local OtherSection = Other:NewSection("Credits Goes To Ahmed Mode")
+OtherSection:NewButton("Chat Spoofer", "Lets you chat for other people", function()
+loadstring(game:HttpGet(('https://pastebin.com/raw/djBfk8Li'),true))()
+end)
+OtherSection:NewButton("Bypassed Fly", "bird mode", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nicuse/RobloxScripts/main/BypassedFly.lua"))()
+Fly(true)
 end)
