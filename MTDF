@@ -1,29 +1,96 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("Multiverse TDF", "BloodTheme")
-------
+local Window = Library.CreateLib("Multiverse Defense", "BloodThame")
+
 -- Main Tab
 local Main = Window:NewTab("Main")
 local MainSection = Main:NewSection("Main")
 
-local function autoPlace(npc, positions)
+MainSection:NewButton("Auto Place", "Makes you do gymnastics", function()
     local RunService = game:GetService("RunService")
     local Timer = 0
     local TimerMax = 2
-
-    local currentIndex = 1
 
     RunService.Heartbeat:Connect(function(Delta)
         Timer += Delta
         if Timer >= TimerMax then
             Timer = 0
-            if currentIndex <= #positions then
-                local args = {
-                    [1] = npc,
-                    [2] = CFrame.new(positions[currentIndex].x, positions[currentIndex].y, positions[currentIndex].z) * CFrame.Angles(0, 1.5707963705062866, 0)
-                }
-                game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(args))
-                currentIndex += 1
-            end
+            local args = {
+                [1] = "Eren",
+                [2] = CFrame.new(15.9067783, 2.05575228, -103.263527) * CFrame.Angles(0, 1.5707963705062866, 0)
+            }
+            game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(args))
+
+            local args = {
+                [1] = "Enji",
+                [2] = CFrame.new(15.9067783, 2.05575228, -105.263527) * CFrame.Angles(0, 1.5707963705062866, 0)
+            }
+            game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(args))
+
+            local args = {
+                [1] = "Enji",
+                [2] = CFrame.new(15.9067783, 2.05575228, -107.263527) * CFrame.Angles(0, 1.5707963705062866, 0)
+            }
+            game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(args))
+
+            local args = {
+                [1] = "Enji",
+                [2] = CFrame.new(15.9067783, 2.05575228, -109.263527) * CFrame.Angles(0, 1.5707963705062866, 0)
+            }
+            game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(args))
+
+            local args = {
+                [1] = "Enji",
+                [2] = CFrame.new(15.9067783, 2.05575228, -111.263527) * CFrame.Angles(0, 1.5707963705062866, 0)
+            }
+            game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(args))
+
+            local args = {
+                [1] = "Dabi",
+                [2] = CFrame.new(15.9067783, 2.05575228, -113.263527) * CFrame.Angles(0, 1.5707963705062866, 0)
+            }
+            game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(args))
+
+            local args = {
+                [1] = "Dabi",
+                [2] = CFrame.new(15.9067783, 2.05575228, -115.263527) * CFrame.Angles(0, 1.5707963705062866, 0)
+            }
+            game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(args))
+
+            local args = {
+                [1] = "Dabi",
+                [2] = CFrame.new(15.9067783, 2.05575228, -117.263527) * CFrame.Angles(0, 1.5707963705062866, 0)
+            }
+            game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(args))
+
+            local args = {
+                [1] = "Dabi",
+                [2] = CFrame.new(15.9067783, 2.05575228, -119.263527) * CFrame.Angles(0, 1.5707963705062866, 0)
+            }
+            game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(args))
+
+            local args = {
+                [1] = "Kizaru",
+                [2] = CFrame.new(15.9067783, 2.05575228, -121.263527) * CFrame.Angles(0, 1.5707963705062866, 0)
+            }
+            game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(args))
+
+            local args = {
+                [1] = "Kizaru",
+                [2] = CFrame.new(15.9067783, 2.05575228, -123.263527) * CFrame.Angles(0, 1.5707963705062866, 0)
+            }
+            game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(args))
+
+            local args = {
+                [1] = "Kizaru",
+                [2] = CFrame.new(15.9067783, 2.05575228, -125.263527) * CFrame.Angles(0, 1.5707963705062866, 0)
+            }
+            game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(args))
+
+            local args = {
+                [1] = "Kizaru",
+                [2] = CFrame.new(15.9067783, 2.05575228, -127.263527) * CFrame.Angles(0, 1.5707963705062866, 0)
+            }
+            game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(args))
         end
     end)
 
@@ -36,15 +103,41 @@ local function autoPlace(npc, positions)
                 [1] = "Slot1"
             }
             game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.Frame.LocalScript.RemoteEvent:FireServer(unpack(args))
+        end
+    end)
+    RunService.Heartbeat:Connect(function(Delta)
+        Timer += Delta
+        if Timer >= TimerMax then
+            Timer = 0
             local args = {
                 [1] = "Slot2"
             }
             game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.Frame.LocalScript.RemoteEvent:FireServer(unpack(args))
         end
     end)
-end
+    RunService.Heartbeat:Connect(function(Delta)
+        Timer += Delta
+        if Timer >= TimerMax then
+            Timer = 0
+            local args = {
+                [1] = "Slot3"
+            }
+            game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.Frame.LocalScript.RemoteEvent:FireServer(unpack(args))
+        end
+    end)
+    RunService.Heartbeat:Connect(function(Delta)
+        Timer += Delta
+        if Timer >= TimerMax then
+            Timer = 0
+            local args = {
+                [1] = "Slot4"
+            }
+            game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.Frame.LocalScript.RemoteEvent:FireServer(unpack(args))
+        end
+    end)
+end)
 
-local function autoUpgrade(npcs)
+MainSection:NewButton("Auto Upgrade", "Makes you do gymnastics", function()
     local RunService = game:GetService("RunService")
     local Timer = 0
     local TimerMax = 2
@@ -53,60 +146,22 @@ local function autoUpgrade(npcs)
         Timer += Delta
         if Timer >= TimerMax then
             Timer = 0
-            for i, npc in ipairs(npcs) do
-                local args = {
-                    [1] = workspace.PlayerFodel.Npc[npc]
-                }
-                game:GetService("Players").LocalPlayer.PlayerGui.UpLevel.Frame.Uplevel.LocalScript.RemoteEvent:FireServer(unpack(args))
-            end
+            local args = {
+                [1] = workspace.PlayerFodel.Npc.Eren
+            }
+            game:GetService("Players").LocalPlayer.PlayerGui.UpLevel.Frame.Uplevel.LocalScript.RemoteEvent:FireServer(unpack(args))
+            local args = {
+                [1] = workspace.PlayerFodel.Npc.Dabi
+            }
+            game:GetService("Players").LocalPlayer.PlayerGui.UpLevel.Frame.Uplevel.LocalScript.RemoteEvent:FireServer(unpack(args))
+            local args = {
+                [1] = workspace.PlayerFodel.Npc.Enji
+            }
+            game:GetService("Players").LocalPlayer.PlayerGui.UpLevel.Frame.Uplevel.LocalScript.RemoteEvent:FireServer(unpack(args))
+            local args = {
+                [1] = workspace.PlayerFodel.Npc.Kizaru
+            }
+            game:GetService("Players").LocalPlayer.PlayerGui.UpLevel.Frame.Uplevel.LocalScript.RemoteEvent:FireServer(unpack(args))
         end
     end)
-end
-
-local function autoReplay()
-    while true do
-        wait(1)  -- หยุดการทำงาน 1 วินาที
-
-        local localPlayer = game:GetService("Players").LocalPlayer
-        local playerGui = localPlayer and localPlayer:FindFirstChild("PlayerGui")
-
-        if playerGui then
-            local screenGui = playerGui:FindFirstChild("ScreenGui")
-            if screenGui and screenGui:FindFirstChild("Win") then
-                local winFrame = screenGui.Win.Frame1
-                if winFrame and winFrame:FindFirstChild("Replay") then
-                    local replayButton = winFrame.Replay
-
-                    local localScript = replayButton:FindFirstChild("LocalScript")
-                    local remoteEvent = localScript and localScript:FindFirstChild("RemoteEvent")
-
-                    if localScript and remoteEvent then
-                        local args = { [1] = localPlayer }
-                        remoteEvent:FireServer(unpack(args))
-                    end
-                end
-            end
-        end
-    end
-end
-
-MainSection:NewToggle("Auto Place", "Makes you do gymnastics", function(state)
-    if state then
-        local positions = {
-            Vector3.new(10.9067783, 2.05575228, -103.263527),
-        }
-        autoPlace("Eren", positions)
-        autoPlace("Erwin", positions)
-    end
-end)
-
-MainSection:NewToggle("Auto Upgrade", "Makes you do gymnastics", function(state)
-    if state then
-        local npcsToUpgrade = {"Eren", "Erwin", "Enji", "Kizaru"}
-        autoUpgrade(npcsToUpgrade)
-    end
-end)
-
-MainSection:NewButton("Auto Replay", "Replay your room", function()
-    autoReplay()
 end)
