@@ -148,6 +148,16 @@ MainSection:NewButton("Auto Place", "Makes you do gymnastics", function()
             game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.Frame.LocalScript.RemoteEvent:FireServer(unpack(args))
         end
     end)
+    RunService.Heartbeat:Connect(function(Delta)
+        Timer += Delta
+        if Timer >= TimerMax then
+            Timer = 0
+            local args = {
+                [1] = "Slot5"
+            }
+            game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.Frame.LocalScript.RemoteEvent:FireServer(unpack(args))
+        end
+    end)
 end)
 
 local function autoUpgrade(npcs)
