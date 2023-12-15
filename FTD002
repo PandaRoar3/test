@@ -65,3 +65,32 @@ wait(1)
 placeUnit("Imu", game.Players.LocalPlayer)
 
 end)
+MainSection:NewButton("Place Imu", "spawn Imu", function()
+
+local sellRemote = game:GetService("ReplicatedStorage").Remotes.SellUnit
+local function sellUnit(unit)
+    local args = {
+        [1] = unit,
+    }
+    sellRemote:FireServer(unpack(args))
+end
+local function placeUnit(unitName, player)
+    local head = player.Character and player.Character:FindFirstChild("Head")
+    if not head then
+        return
+    end
+    local position = head.Position
+    position = Vector3.new(position.X, 9.256921768188477, position.Z)
+    local args = {
+        [1] = unitName,
+        [2] = CFrame.new(position),
+    }
+    game:GetService("ReplicatedStorage").Remotes.PlaceUnit:FireServer(unpack(args))
+end
+placeUnit("Marine", game.Players.LocalPlayer)
+wait(1)
+sellUnit(workspace.Units.Marine)
+wait(1)
+placeUnit("Sun God Nika", game.Players.LocalPlayer)
+
+end)
