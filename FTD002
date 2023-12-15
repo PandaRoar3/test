@@ -1,10 +1,10 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("Multiverse Defense", "BloodTheme")
 
-local TTab = Window:NewTab("Place Unit MF")
+local TTab = Window:NewTab("Marine Force")
 local MainSection = TTab:NewSection("Place Unit Marine Force")
-local TTab = Window:NewTab("Summon")
-local SecondSection = TTab:NewSection("")
+local TTab = Window:NewTab("Coming soon")
+local SecondSection = TTab:NewSection("Coming soon...")
 
 MainSection:NewButton("Place Mihawk", "spawn Mihawk", function()
 
@@ -92,5 +92,35 @@ wait(1)
 sellUnit(workspace.Units.Marine)
 wait(1)
 placeUnit("Sun God Nika", game.Players.LocalPlayer)
+
+end)
+
+MainSection:NewButton("Place Gol D Roger", "spawn Gol D Roger", function()
+
+local sellRemote = game:GetService("ReplicatedStorage").Remotes.SellUnit
+local function sellUnit(unit)
+    local args = {
+        [1] = unit,
+    }
+    sellRemote:FireServer(unpack(args))
+end
+local function placeUnit(unitName, player)
+    local head = player.Character and player.Character:FindFirstChild("Head")
+    if not head then
+        return
+    end
+    local position = head.Position
+    position = Vector3.new(position.X, 9.256921768188477, position.Z)
+    local args = {
+        [1] = unitName,
+        [2] = CFrame.new(position),
+    }
+    game:GetService("ReplicatedStorage").Remotes.PlaceUnit:FireServer(unpack(args))
+end
+placeUnit("Marine", game.Players.LocalPlayer)
+wait(1)
+sellUnit(workspace.Units.Marine)
+wait(1)
+placeUnit("Gol D Roger", game.Players.LocalPlayer)
 
 end)
