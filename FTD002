@@ -65,7 +65,7 @@ wait(1)
 placeUnit("Imu", game.Players.LocalPlayer)
 
 end)
-MainSection:NewButton("Place Imu", "spawn Imu", function()
+MainSection:NewButton("Place Sun God Nika", "spawn Sun God Nika", function()
 
 local sellRemote = game:GetService("ReplicatedStorage").Remotes.SellUnit
 local function sellUnit(unit)
