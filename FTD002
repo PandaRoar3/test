@@ -1,0 +1,196 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Multiverse Defense", "BloodTheme")
+
+-- Main Tab
+local Main = Window:NewTab("Main")
+local MainSection = Main:NewSection("Main")
+
+MainSection:NewButton("Auto Place", "Makes you do gymnastics", function()
+    local RunService = game:GetService("RunService")
+    local Timer = 0
+    local TimerMax = 2
+
+    RunService.Heartbeat:Connect(function(Delta)
+        Timer += Delta
+        if Timer >= TimerMax then
+            Timer = 0
+        local towerArgs = {
+            [1] = "Eren",
+            [2] = CFrame.new(21.9669, 10.492, -64.734)
+        }
+        game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(towerArgs))
+        local towerArgs = {
+            [1] = "Erwin",
+            [2] = CFrame.new(21.966, 10.492, -68.734)
+        }
+        game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(towerArgs))
+        local towerArgs = {
+            [1] = "Enji",--1
+            [2] = CFrame.new(14.244, 2.055, -68.496)
+        }
+        game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(towerArgs))
+        local towerArgs = {
+            [1] = "Enji",--2
+            [2] = CFrame.new(14.244, 2.055, -70.496)
+        }
+        game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(towerArgs))
+        local towerArgs = {
+            [1] = "Enji",--3
+            [2] = CFrame.new(14.244, 2.055, -72.496)
+        }
+        game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(towerArgs))
+        local towerArgs = {
+            [1] = "Enji",--4
+            [2] = CFrame.new(14.244, 2.055, -74.496)
+        }
+        game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(towerArgs))
+        local towerArgs = {
+            [1] = "Dabi",--1
+            [2] = CFrame.new(13.610, 2.055, -68.633)
+        }
+        game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(towerArgs))
+        local towerArgs = {
+            [1] = "Dabi",--2
+            [2] = CFrame.new(13.610, 2.055, -70.633)
+        }
+        game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(towerArgs))
+        local towerArgs = {
+            [1] = "Dabi",--3
+            [2] = CFrame.new(13.610, 2.055, -72.633)
+        }
+        game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(towerArgs))
+        local towerArgs = {
+            [1] = "Dabi",--4
+            [2] = CFrame.new(13.610, 2.055, -74.633)
+        }
+        game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(towerArgs))
+        local towerArgs = {
+            [1] = "Kizaru",--1
+            [2] = CFrame.new(19.197, 2.155, -77.610)
+        }
+        game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(towerArgs))
+        local towerArgs = {
+            [1] = "Kizaru",--2
+            [2] = CFrame.new(19.197, 2.155, -79.610)
+        }
+        game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(towerArgs))
+        local towerArgs = {
+            [1] = "Kizaru",--3
+            [2] = CFrame.new(19.197, 2.155, -81.610)
+        }
+        game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(towerArgs))
+        local towerArgs = {
+            [1] = "Kizaru",--4
+            [2] = CFrame.new(19.197, 2.155, -83.610)
+        }
+        game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(towerArgs))
+        local towerArgs = {
+            [1] = "Akainu",--1
+            [2] = CFrame.new(17.197, 8.155, -77.610)
+        }
+        game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(towerArgs))
+        local towerArgs = {
+            [1] = "Akainu",--2
+            [2] = CFrame.new(17.197, 6.155, -79.610)
+        }
+        game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(towerArgs))
+        local towerArgs = {
+            [1] = "Akainu",--3
+            [2] = CFrame.new(17.197, 4.155, -81.610)
+        }
+        game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(towerArgs))
+        local towerArgs = {
+            [1] = "Akainu",--4
+            [2] = CFrame.new(17.197, 2.155, -83.610)
+        }
+        game:GetService("ReplicatedStorage").Event.TowerOn:FireServer(unpack(towerArgs))
+    end
+    end)
+
+    -- Auto Equip
+    RunService.Heartbeat:Connect(function(Delta)
+        Timer += Delta
+        if Timer >= TimerMax then
+            Timer = 0
+            local args = {
+                [1] = "Slot1"
+            }
+            game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.Frame.LocalScript.RemoteEvent:FireServer(unpack(args))
+        end
+    end)
+    RunService.Heartbeat:Connect(function(Delta)
+        Timer += Delta
+        if Timer >= TimerMax then
+            Timer = 0
+            local args = {
+                [1] = "Slot2"
+            }
+            game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.Frame.LocalScript.RemoteEvent:FireServer(unpack(args))
+        end
+    end)
+    RunService.Heartbeat:Connect(function(Delta)
+        Timer += Delta
+        if Timer >= TimerMax then
+            Timer = 0
+            local args = {
+                [1] = "Slot3"
+            }
+            game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.Frame.LocalScript.RemoteEvent:FireServer(unpack(args))
+        end
+    end)
+    RunService.Heartbeat:Connect(function(Delta)
+        Timer += Delta
+        if Timer >= TimerMax then
+            Timer = 0
+            local args = {
+                [1] = "Slot4"
+            }
+            game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.Frame.LocalScript.RemoteEvent:FireServer(unpack(args))
+        end
+    end)
+    RunService.Heartbeat:Connect(function(Delta)
+        Timer += Delta
+        if Timer >= TimerMax then
+            Timer = 0
+            local args = {
+                [1] = "Slot5"
+            }
+            game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.Frame.LocalScript.RemoteEvent:FireServer(unpack(args))
+        end
+    end)
+end)
+
+local function autoUpgrade(npcs)
+    local RunService = game:GetService("RunService")
+    local Timer = 0
+    local TimerMax = 2
+
+    RunService.Heartbeat:Connect(function(Delta)
+        Timer += Delta
+        if Timer >= TimerMax then
+            Timer = 0
+            for i, npc in ipairs(npcs) do
+                local args = {
+                    [1] = workspace.PlayerFodel.Npc[npc]
+                }
+                game:GetService("Players").LocalPlayer.PlayerGui.UpLevel.Frame.Uplevel.LocalScript.RemoteEvent:FireServer(unpack(args))
+            end
+        end
+    end)
+end
+
+MainSection:NewButton("Auto Upgrade", "Makes you do gymnastics", function()
+    local npcsToUpgrade = {"Eren", "Erwin", "Enji", "Kizaru"}
+    autoUpgrade(npcsToUpgrade)
+end)
+MainSection:NewButton("Place Imu", "spawn Imu", function()
+    placeUnit("Marine", game.Players.LocalPlayer)
+    wait(1)
+    sellUnit(workspace.Units.Marine)
+    wait(1)
+    placeUnit("Imu", game.Players.LocalPlayer)
+end)
+MainSection:NewButton("Teleport to Room", "Teleport to Room", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(
+-3606.81812, 1039.22803, -1108.78674, -0.906289101, 0.0733914673, -0.416237652, 2.10808544e-08, 0.984808743, 0.173642471, 0.422658354, 0.157370269, -0.892521441)
+end)
