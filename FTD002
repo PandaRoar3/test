@@ -95,7 +95,7 @@ placeUnit("Sun God Nika", game.Players.LocalPlayer)
 
 end)
 
-MainSection:NewButton("Place Gol D Roger", "spawn Gol D Roger", function()
+MainSection:NewButton("Place Ashura", "spawn Ashura", function()
 
 local sellRemote = game:GetService("ReplicatedStorage").Remotes.SellUnit
 local function sellUnit(unit)
@@ -121,6 +121,6 @@ placeUnit("Marine", game.Players.LocalPlayer)
 wait(1)
 sellUnit(workspace.Units.Marine)
 wait(1)
-placeUnit("Gol D Roger", game.Players.LocalPlayer)
+placeUnit("Ashura", game.Players.LocalPlayer)
 
 end)
