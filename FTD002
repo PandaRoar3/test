@@ -1,53 +1,67 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("Multiverse Defense", "BloodTheme")
 
--- Main Tab
-local Main = Window:NewTab("Marine Force")
-local MainSection = Main:NewSection("Marine Force spawn unit")
+local TTab = Window:NewTab("Place Unit MF")
+local MainSection = TTab:NewSection("Place Unit Marine Force")
+local TTab = Window:NewTab("Summon")
+local SecondSection = TTab:NewSection("")
 
-MainSection:NewButton("Teleport to Room", "Teleport to Room", function()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(
--3606.81812, 1039.22803, -1108.78674, -0.906289101, 0.0733914673, -0.416237652, 2.10808544e-08, 0.984808743, 0.173642471, 0.422658354, 0.157370269, -0.892521441)
-end)
+MainSection:NewButton("Place Mihawk", "spawn Mihawk", function()
 
 local sellRemote = game:GetService("ReplicatedStorage").Remotes.SellUnit
 local function sellUnit(unit)
     local args = {
         [1] = unit,
     }
-
     sellRemote:FireServer(unpack(args))
 end
-
 local function placeUnit(unitName, player)
     local head = player.Character and player.Character:FindFirstChild("Head")
     if not head then
         return
     end
-
     local position = head.Position
-    position = Vector3.new(position.X, 9.256921768188477, position.Z)  -- ล็อคค่า y
-
+    position = Vector3.new(position.X, 9.256921768188477, position.Z)
     local args = {
         [1] = unitName,
         [2] = CFrame.new(position),
     }
-
     game:GetService("ReplicatedStorage").Remotes.PlaceUnit:FireServer(unpack(args))
 end
+placeUnit("Marine", game.Players.LocalPlayer)
+wait(1)
+sellUnit(workspace.Units.Marine)
+wait(1)
+placeUnit("Mihawk", game.Players.LocalPlayer)
 
-MainSection:NewButton("Place Mihawk", "spawn Mihawk", function()
-    placeUnit("Marine", game.Players.LocalPlayer)
-    wait(1)
-    sellUnit(workspace.Units.Marine)
-    wait(1)
-    placeUnit("Mihawk", game.Players.LocalPlayer)
 end)
 
 MainSection:NewButton("Place Imu", "spawn Imu", function()
-    placeUnit("Marine", game.Players.LocalPlayer)
-    wait(1)
-    sellUnit(workspace.Units.Marine)
-    wait(1)
-    placeUnit("Imu", game.Players.LocalPlayer)
+
+local sellRemote = game:GetService("ReplicatedStorage").Remotes.SellUnit
+local function sellUnit(unit)
+    local args = {
+        [1] = unit,
+    }
+    sellRemote:FireServer(unpack(args))
+end
+local function placeUnit(unitName, player)
+    local head = player.Character and player.Character:FindFirstChild("Head")
+    if not head then
+        return
+    end
+    local position = head.Position
+    position = Vector3.new(position.X, 9.256921768188477, position.Z)
+    local args = {
+        [1] = unitName,
+        [2] = CFrame.new(position),
+    }
+    game:GetService("ReplicatedStorage").Remotes.PlaceUnit:FireServer(unpack(args))
+end
+placeUnit("Marine", game.Players.LocalPlayer)
+wait(1)
+sellUnit(workspace.Units.Marine)
+wait(1)
+placeUnit("Imu", game.Players.LocalPlayer)
+
 end)
