@@ -21,7 +21,7 @@ local function placeUnit(unitName, player)
         return
     end
     local position = head.Position
-    position = Vector3.new(position.X, 9.256921768188477, position.Z)
+    position = Vector3.new(position.X, 10.056011199951172, position.Z)
     local args = {
         [1] = unitName,
         [2] = CFrame.new(position),
@@ -51,7 +51,7 @@ local function placeUnit(unitName, player)
         return
     end
     local position = head.Position
-    position = Vector3.new(position.X, 9.256921768188477, position.Z)
+    position = Vector3.new(position.X, 10.056011199951172, position.Z)
     local args = {
         [1] = unitName,
         [2] = CFrame.new(position),
@@ -80,7 +80,7 @@ local function placeUnit(unitName, player)
         return
     end
     local position = head.Position
-    position = Vector3.new(position.X, 9.256921768188477, position.Z)
+    position = Vector3.new(position.X, 10.056011199951172, position.Z)
     local args = {
         [1] = unitName,
         [2] = CFrame.new(position),
@@ -95,7 +95,7 @@ placeUnit("Sun God Nika", game.Players.LocalPlayer)
 
 end)
 
-MainSection:NewButton("Place Ashura", "spawn Ashura", function()
+MainSection:NewButton("Place Shiny Roro", "spawn Shiny Roro", function()
 
 local sellRemote = game:GetService("ReplicatedStorage").Remotes.SellUnit
 local function sellUnit(unit)
@@ -110,7 +110,7 @@ local function placeUnit(unitName, player)
         return
     end
     local position = head.Position
-    position = Vector3.new(position.X, 9.256921768188477, position.Z)
+    position = Vector3.new(position.X, 10.056011199951172, position.Z)
     local args = {
         [1] = unitName,
         [2] = CFrame.new(position),
@@ -121,6 +121,6 @@ placeUnit("Marine", game.Players.LocalPlayer)
 wait(1)
 sellUnit(workspace.Units.Marine)
 wait(1)
-placeUnit("Ashura", game.Players.LocalPlayer)
+placeUnit("Shiny Roro", game.Players.LocalPlayer)
 
 end)
